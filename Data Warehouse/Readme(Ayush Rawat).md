@@ -19,5 +19,5 @@ Step2 : Design Data Architecture
         Select layer requirements : Defination, Objective, Object Type(Table or view), Load Method, Data Transformation, Data Modeling, Target Audience
 
     Draw the Architecture on draw.io
-    
+
 
