@@ -140,13 +140,19 @@ BEGIN
     END TRY
     BEGIN CATCH
         PRINT '=========================================='
-        PRINT 'Fatal Error Need to Re-Configure'
+        PRINT 'Fatal Error, Need to Re-Configure'
         PRINT 'Error Message: ' + ERROR_MESSAGE();
         PRINT 'Error Number: ' + CAST(ERROR_NUMBER() AS NVARCHAR);
         PRINT 'Error State: ' + CAST(ERROR_STATE() AS NVARCHAR);
 
-         INSERT INTO ErrorLog (ProcedureName, ErrorMessage, ErrorNumber, ErrorState, ErrorSeverity, ErrorLine, EventTime)
-         VALUES ('bronze.load_bronze', ERROR_MESSAGE(), ERROR_NUMBER(), ERROR_STATE(), ERROR_SEVERITY(), ERROR_LINE(), GETDATE());
-        THROW;
+        --  INSERT INTO ErrorLog (ProcedureName, ErrorMessage, ErrorNumber, ErrorState, ErrorSeverity, ErrorLine, EventTime)
+        --  VALUES ('bronze.load_bronze', ERROR_MESSAGE(), ERROR_NUMBER(), ERROR_STATE(), ERROR_SEVERITY(), ERROR_LINE(), GETDATE());
+        -- THROW;
     END CATCH
 END;
+go
+
+
+-- Executes the procedure
+execute bronze.load_bronze;
+go
