@@ -2,12 +2,13 @@
 Stored Procedure: Load Silver Layer (Bronze -> Silver)
 
 Script Purpose:
-    This stored procedure performs the ETL (Extract, Transform, Load) process to 
+    This stored procedure performs the ETL (Extract, Transform, Load) process to
     populate the 'silver' schema tables from the 'bronze' schema.
 	Actions Performed:
 		- Truncates Silver tables.
 		- Inserts transformed and cleansed data from Bronze into Silver tables.
 */
+
 
 CREATE OR ALTER PROCEDURE silver.load_silver AS
 BEGIN
@@ -27,11 +28,11 @@ BEGIN
 		TRUNCATE TABLE silver.crm_cust_info;
 		PRINT 'Inserting Data : silver.crm_cust_info';
 		INSERT INTO silver.crm_cust_info (
-			cst_id, 
-			cst_key, 
-			cst_firstname, 
-			cst_lastname, 
-			cst_marital_status, 
+			cst_id,
+			cst_key,
+			cst_firstname,
+			cst_lastname,
+			cst_marital_status,
 			cst_gender,
 			cst_create_date
 		)
@@ -40,12 +41,12 @@ BEGIN
 			cst_key,
 			TRIM(cst_firstname) AS cst_firstname,
 			TRIM(cst_lastname) AS cst_lastname,
-			CASE 
+			CASE
 				WHEN UPPER(TRIM(cst_marital_status)) = 'S' THEN 'Single'
 				WHEN UPPER(TRIM(cst_marital_status)) = 'M' THEN 'Married'
 				ELSE 'n/a'
 			END AS cst_marital_status, -- Normalize marital status values to readable format
-			CASE 
+			CASE
 				WHEN UPPER(TRIM(cst_gender)) = 'F' THEN 'Female'
 				WHEN UPPER(TRIM(cst_gender)) = 'M' THEN 'Male'
 				ELSE 'n/a'
@@ -84,7 +85,7 @@ BEGIN
 			SUBSTRING(prd_key, 7, LEN(prd_key)) AS prd_key,        -- Extract product key
 			prd_rm,
 			ISNULL(prd_cost, 0) AS prd_cost,
-			CASE 
+			CASE
 				WHEN UPPER(TRIM(prd_line)) = 'M' THEN 'Mountain'
 				WHEN UPPER(TRIM(prd_line)) = 'R' THEN 'Road'
 				WHEN UPPER(TRIM(prd_line)) = 'S' THEN 'Other Sales'
@@ -117,30 +118,30 @@ BEGIN
 			sls_quantity,
 			sls_price
 		)
-		SELECT 
+		SELECT
 			sls_ord_num,
 			sls_prd_key,
 			sls_cust_id,
-			CASE 
+			CASE
 				WHEN sls_order_dt = 0 OR LEN(sls_order_dt) != 8 THEN NULL
 				ELSE CAST(CAST(sls_order_dt AS VARCHAR) AS DATE)
 			END AS sls_order_dt,
-			CASE 
+			CASE
 				WHEN sls_ship_dt = 0 OR LEN(sls_ship_dt) != 8 THEN NULL
 				ELSE CAST(CAST(sls_ship_dt AS VARCHAR) AS DATE)
 			END AS sls_ship_dt,
-			CASE 
+			CASE
 				WHEN sls_due_dt = 0 OR LEN(sls_due_dt) != 8 THEN NULL
 				ELSE CAST(CAST(sls_due_dt AS VARCHAR) AS DATE)
 			END AS sls_due_dt,
-			CASE 
+			CASE
 				WHEN sls_sales IS NULL OR sls_sales <= 0 OR sls_sales != sls_quantity * ABS(sls_price) 
 					THEN sls_quantity * ABS(sls_price)
 				ELSE sls_sales
 			END AS sls_sales, -- Recalculate sales if original value is missing or incorrect
 			sls_quantity,
-			CASE 
-				WHEN sls_price IS NULL OR sls_price <= 0 
+			CASE
+				WHEN sls_price IS NULL OR sls_price <= 0
 					THEN sls_sales / NULLIF(sls_quantity, 0)
 				ELSE sls_price  -- Derive price if original value is invalid
 			END AS sls_price
@@ -163,7 +164,7 @@ BEGIN
 			CASE
 				WHEN cid LIKE 'NAS%' THEN SUBSTRING(cid, 4, LEN(cid)) -- Remove 'NAS' prefix if present
 				ELSE cid
-			END AS cid, 
+			END AS cid,
 			CASE
 				WHEN bdate > GETDATE() THEN NULL
 				ELSE bdate
@@ -192,7 +193,7 @@ BEGIN
 			cntry
 		)
 		SELECT
-			REPLACE(cid, '-', '') AS cid, 
+			REPLACE(cid, '-', '') AS cid,
 			CASE
 				WHEN TRIM(cntry) = 'DE' THEN 'Germany'
 				WHEN TRIM(cntry) IN ('US', 'USA') THEN 'United States'
@@ -203,7 +204,7 @@ BEGIN
 	    SET @end_time = GETDATE();
         PRINT 'Load Duration: ' + CAST(DATEDIFF(millisecond, @start_time, @end_time) AS NVARCHAR) + ' milliseconds';
         PRINT '-------------';
-		
+
 		-- Loading erp_px_cat_g1v2
 		SET @start_time = GETDATE();
 		PRINT 'Deleting Content : silver.erp_px_cat_g1v2';
