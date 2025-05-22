@@ -83,3 +83,4 @@ FROM product_aggregations;
 go
 
 SELECT* FROM gold.report_products;
+-- Completed
