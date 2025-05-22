@@ -37,15 +37,15 @@ with customer_spending as(
         ON f.customer_key = c.customer_key
     GROUP BY c.customer_key
 )
-SELECT 
+SELECT
     customer_segment,
     COUNT(customer_key) as total_customers
 FROM (
-    SELECT 
+    SELECT
         customer_key,
-        CASE 
+        CASE
             WHEN lifespan>=12 and total_spending>5000 THEN 'VIP' 
-            WHEN lifespan>=12 and total_spending<=5000 THEN 'VIP' 
+            WHEN lifespan>=12 and total_spending<=5000 THEN 'Regular' 
             ELSE  'New'
         END as customer_segment
         from customer_spending
