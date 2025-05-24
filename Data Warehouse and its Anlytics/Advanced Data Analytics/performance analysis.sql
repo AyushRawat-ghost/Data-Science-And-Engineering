@@ -22,7 +22,7 @@ AVG(current_sales) OVER (PARTITION BY product_name) as avg_sales,
 current_sales - AVG(current_sales) OVER (PARTITION BY product_name) as diff_avg,
 CASE
     WHEN current_sales - AVG(current_sales) OVER (PARTITION BY product_name) > 0 THEN 'Above Avg'
-    WHEN current_sales - AVG(current_sales) OVER (PARTITION BY product_name) < 0 THEN 'Above Avg'
+    WHEN current_sales - AVG(current_sales) OVER (PARTITION BY product_name) < 0 THEN 'Below Avg'
     ELSE 'Avg'
 END avg_change,
 
