@@ -8,7 +8,7 @@ Technology used :
 Assits:
     Mentor : Baraa
     Verified by : Ms Namisha Solanki
-    Collaborator : ******A *****T  (git username : techplay29)
+    Collaborator : ******A (git username : techplay29)
         Note : Collaborator Name was not Disclosed due to privacy Concerns
 
 Project Flow :
