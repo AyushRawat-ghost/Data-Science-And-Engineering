@@ -3,7 +3,7 @@ Technology used :
                 Code Editor : Visual Studio Code
                 Language : Python(.py),Jupyter Notebook(.ipynb)
                 Git : Repository and Local Repository, GitHub
-                Python libraries : pandas, matplotlib, seaborn, pyodbc, sqlalchemy
+                Python libraries : pandas, matplotlib, seaborn, pyodbc, sqlalchemy, urlib
 
 Assits:
     Mentor : Baraa
