@@ -5,11 +5,16 @@ Technology used :
                 Git : Repository and Local Repository, GitHub
                 Python libraries : pandas, matplotlib, seaborn, pyodbc, sqlalchemy, urlib
 
+
+
 Assits:
     Mentor : Baraa
     Verified by : Ms Namisha Solanki
     Collaborator : ******A (git username : techplay29)
         Note : Collaborator Name was not Disclosed due to privacy Concerns
+    Enviornment Name : Tejaswini Kadam ( Best Friend )
+
+
 
 Project Flow :
     1st Stage : Data Retrival
@@ -22,5 +27,3 @@ Project Flow :
     3rd Stage : Advanced Data Analytics
 
     4th Stage : Visualization using Jupyter Notebook
-
-
