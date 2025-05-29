@@ -8,10 +8,10 @@
 
 
 **Assits** :
-        Mentor : Baraa
+        Mentor : Baraa, Luke Barousse
         Verified by : Ms Namisha Solanki
-        Collaborator : ******A (git username : techplay29)
-            Note : Collaborator Name was not Disclosed due to privacy Concerns
+        Honour To : ******A (git username : techplay29)
+            Note : Name was not Disclosed due to privacy Concerns
         Enviornment Name : Tejaswini Kadam ( Best Friend )
 
 
