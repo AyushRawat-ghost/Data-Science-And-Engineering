@@ -1,3 +1,11 @@
+**Assits** :
+        Mentor : Alex, Learnit Training
+        Honour To : *****i ***i
+            Note : Name was not Disclosed due to privacy Concerns
+
+
+
+
 **Column Creation Directories**:
     M language used to create new columns or DAX for creating calculated columns
 
