@@ -1,16 +1,8 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
+**Technology used**:
+    Power BI,Github, Gemini
+    
+**Honour To**: ******m ****m*
+        Name was Not disclosed due to Privacy Concern
 
 
 
