@@ -1,0 +1,36 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+
+# ---------------------------------
+# 1. PYTHON/PYCHARM SPECIFIC
+# ---------------------------------
+# PyCharm project files (local configuration)
+.idea/
+# Python environment and cache files
+__pycache__/
+*.pyc
+venv/
+# Conda environment directory (if stored locally)
+Purva_Patolke/
+
+
+data/raw_csvs/
+
+# SQLITE database files (IGNORE, as they are local files)
+*.db
+*.sqlite
+*.sqlite3
+
+# SQL Server database files (IGNORE, as these are server files, but included for completeness if you had MDB/LDF files locally)
+*.mdf
+*.ldf
+
+
+pipelines/config.py
+
+.ipynb_checkpoints
+# Standard log files
+*.log
