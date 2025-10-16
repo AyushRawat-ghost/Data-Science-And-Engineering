@@ -1,0 +1,51 @@
+# ------------------------------------
+# 1. ENVIRONMENT AND PYTHON BUILD FILES
+# ------------------------------------
+# Virtual environment folder
+venv/
+.venv/
+
+# Python compiled files
+__pycache__/
+*.pyc
+*.pyd
+
+# Dependencies managed by package managers
+.mypy_cache/
+.pytest_cache/
+
+# IDE/Editor Files (VS Code, PyCharm)
+.idea/
+.vscode/
+*.swp
+
+# ------------------------------------
+# 2. DATA, SECRETS, AND ARTIFACTS
+# ------------------------------------
+# Secrets/Credentials
+.env
+*.key
+*.pem
+
+# Large Data Files
+data/raw/*.csv
+data/raw/*.zip
+
+# Trained Models
+data/models/*.pkl
+data/models/*.joblib
+
+# Database output files
+*.db
+*.sqlite
+*.sqlite3
+
+# ------------------------------------
+# 3. OPERATIONAL LOGS AND TEMPORARY FILES
+# ------------------------------------
+# Jupyter Notebook temporary/checkpoint files
+.ipynb_checkpoints
+
+# Logs and temporary files
+*.log
+tmp/
