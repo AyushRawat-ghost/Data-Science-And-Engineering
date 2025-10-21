@@ -1,18 +1,14 @@
 import pandas as pd
 from sqlalchemy.engine import Engine
 from src.utils.db_connector import get_sqlalchemy_engine
+TEMP_TABLE_NAME = 'T_TEMP_SILVER_FACT'
 
 
 def load_temp_master_fact(df_silver_master: pd.DataFrame) -> str:
-
+    ENGINE: Engine = get_sqlalchemy_engine()
     print("\n--- Loading Silver Master Fact to SQL Transient Storage ---")
 
-    # 1. Get the SQLAlchemy Engine object securely from the utility file
-    ENGINE: Engine = get_sqlalchemy_engine()
-    TEMP_TABLE_NAME = 'T_TEMP_SILVER_FACT'
-
     try:
-        # 2. Use pandas.to_sql for bulk write
         df_silver_master.to_sql(
             name=TEMP_TABLE_NAME,
             con=ENGINE,
