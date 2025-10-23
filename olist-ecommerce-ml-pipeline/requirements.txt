@@ -2,3 +2,6 @@ pandas
 sqlalchemy
 pyodbc
 python-dotenv
+xgboost
+scikit-learn
+joblib
