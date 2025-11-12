@@ -1,0 +1,86 @@
+version: '3.8'
+x-airflow-common:
+  &airflow-common
+  image: ${AIRFLOW_IMAGE_NAME:-custom-airflow-pyspark:latest} # Use the image built from our Dockerfile
+  user: "${AIRFLOW_UID:-50000}:0"
+  environment:
+    &airflow-env
+    AIRFLOW__CORE__EXECUTOR: LocalExecutor
+    AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+    AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+    AIRFLOW__WEBSERVER__SECRET_KEY: super-secret
+    AIRFLOW__WEBSERVER__EXPOSE_HOST_PORT: 'true'
+    # Spark configuration for Airflow to find the Spark/Java binaries
+    JAVA_HOME: "/usr/lib/jvm/java-17-openjdk-amd64" # Path set by the openjdk-17 install in Dockerfile
+    SPARK_HOME: "/home/airflow/.local/lib/python3.11/site-packages/pyspark" # Default PySpark install path
+    # Kafka/Network configuration
+    KAFKA_BROKER: kafka:9092
+  volumes:
+    - ./dags:/opt/airflow/dags
+    - ./logs:/opt/airflow/logs
+    - ./config/airflow.cfg:/opt/airflow/airflow.cfg
+    - ./local_datalake:/opt/airflow/local_datalake
+  depends_on:
+    postgres:
+      condition: service_healthy
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "airflow"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: always
+
+  airflow-init:
+    <<: *airflow-common
+    container_name: airflow_init
+    entrypoint: /bin/bash
+    command: ["-c", "airflow db migrate && airflow users create --username airflow --password airflow --firstname Airflow --lastname User --role Admin --email admin@example.com"]
+
+  airflow-webserver:
+    <<: *airflow-common
+    command: ["airflow", "webserver"]
+    ports:
+      - "8080:8080"
+    restart: always
+
+  airflow-scheduler:
+    <<: *airflow-common
+    command: ["airflow", "scheduler"]
+    restart: always
+  
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.5.3
+    hostname: zookeeper
+    container_name: zookeeper
+    ports:
+      - "2181:2181"
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    restart: always
+
+  kafka:
+    image: confluentinc/cp-kafka:7.5.3
+    hostname: kafka
+    container_name: kafka
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092 # Note: localhost:9092 is for external access
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    depends_on:
+      - zookeeper
+    restart: always

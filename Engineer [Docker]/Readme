@@ -1,0 +1,82 @@
+****ER Diagram****
+
+
+erDiagram
+    FACILITY ||--o{ DEVICE : contains
+    DEVICE ||--o{ SENSOR_READINGS : generates
+    DEVICE ||--|{ ALERT_HISTORY : references
+    FACILITY ||--o{ ALERT_HISTORY : reports
+    FACILITY ||--o{ HOURLY_SUMMARY : summarizes
+    DEVICE ||--o{ AUDIT_LOG : logs
+    FACILITY ||--o{ AUDIT_LOG : logs
+    
+    
+    
+    FACILITY {
+        string facility_id PK "Row key"
+        double temp_max_c  "Rules"
+        double pressure_min_hpa  "Rules"
+        string alert_reciepient "Rules"
+        string facility_name "meta"
+        string manager_name "meta"
+        string city "meta"
+
+    }
+    
+    DEVICE {
+        string device_id PK "Row Key"
+        string model_number "info"
+        string serial_number "info"
+        string firmware_version "info"
+        date firmware_version "info"
+        
+        string facility_id FK "Row Key of FACILITY"
+        string aisle "loc"
+        string loc_latitude "loc"
+    }
+    
+    SENSOR_READINGS {
+        string row_key PK "Salt + device_id + Reversed TS"
+        string device_id FK "Row key of Device"
+        double temp_c "m"
+        double humid_pct "m"
+        double pressure_hpa "m"
+        double vibration_mms "m"
+        long reading_ts "c"
+        string sensor_status "c"
+    }
+
+    ALERT_HISTORY {
+        string row_key PK "Facility ID + Reversed TS"
+        string alert_type "alert"
+        double threshold_value "alert"
+        double actual_value "alert"
+                string facility_id FK "Row Key of FACILITY"
+        string device_id FK "References DEVICE"
+        long reading_ts "Timestamp of specific raw reading"
+        string status  "ref"
+    }
+
+    HOURLY_SUMMARY {
+        string row_key PK "Facility ID + Hour Key"
+        string facility_id FK "Facility ID"
+        
+        double temp_avg_c "temp"
+        double max_c "temp"
+        double min_c "temp"
+        double avg_pct "humid"
+        double max_pct "humid"
+        long reading_count "humid"
+        string message "alert"
+
+    }
+
+    AUDIT_LOG {
+        string row_key PK "System ID + Reversed TS"
+        string event_level "log"
+        string message "log"
+        string service_name "log"
+        string  device_id "log"
+        
+    }
+    

@@ -1,0 +1,64 @@
+## 1. Operating System and Editor Files (Windows/Linux/VS Code)
+# Windows thumbnails
+Thumbs.db
+# Mac DS_Store files
+.DS_Store
+
+.env
+# IDE and Editor Files
+.vscode/           # Visual Studio Code settings (user specific)
+.idea/             # JetBrains/PyCharm project files
+__pycache__/       # Python compiled files
+*.pyc
+.ipynb_checkpoints # Jupyter Notebook checkpoints
+
+## 2. Python / Conda Environment
+# Conda environment directory (if created inside the project)
+/venv/
+/env/
+# Environment files specific to your local machine
+conda-lock.yml
+environment.yml  # Only if it contains machine-specific paths/settings
+
+## 3. Docker and Airflow (Crucial for DE Projects)
+# Docker build context files
+*.tar.gz
+*.tmp
+/local_datalake
+# Airflow specific generated files
+/logs/* # Airflow runtime logs
+!/logs/.gitkeep    # Keep the directory tracked (optional)
+/webserver_config.py # Local webserver config
+/unittests.cfg
+
+# Docker runtime volumes (where databases and data lake staging is stored)
+/volumes/
+# Remove specific file mount if you created them for testing,
+# but keep the necessary configuration files tracked
+!config/airflow.cfg # DO NOT ignore config/airflow.cfg, it's needed for the template!
+*.db               # SQLite databases (if used instead of Postgres)
+airflow.db
+
+## 4. PySpark / Big Data Artifacts
+# Spark event logs and history files
+/spark-events/
+/metastore_db/
+/tmp/
+.spark_conf.json
+
+# Output directories created by PySpark jobs
+/output/
+/data_staging/
+/checkpoints/      # Spark Streaming checkpoints
+/target/           # dbt target folder (if you use dbt later)
+
+## 5. Security and Credentials (CRITICAL)
+*.key
+*.pem
+*.p12
+*.crt
+# Your GCP Service Account JSON Key
+*.json             # Be careful, but often safer to ignore raw JSON keys
+!config/*.json     # If you store the SA key in config/, you MUST NOT commit it.
+# List the key file explicitly if you know the name:
+# config/gcp_sa_key.json
