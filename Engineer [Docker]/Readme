@@ -1,3 +1,12 @@
+Docker Commands
+docker build -t custom-airflow-pyspark:latest .
+docker-compose up -d --build
+docker-compose up -d
+
+
+
+
+
 ****ER Diagram****
 
 

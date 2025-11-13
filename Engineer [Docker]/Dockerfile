@@ -16,3 +16,7 @@ RUN pip install --no-cache-dir \
     pyspark==4.0.1 \
     pandas \
     kafka-python
+    happybase \
+    weaviate-client \
+    langchain-weaviate \
+    langchain

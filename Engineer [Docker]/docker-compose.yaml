@@ -1,7 +1,6 @@
-version: '3.8'
 x-airflow-common:
   &airflow-common
-  image: ${AIRFLOW_IMAGE_NAME:-custom-airflow-pyspark:latest} # Use the image built from our Dockerfile
+  image: ${AIRFLOW_IMAGE_NAME:-custom-airflow-pyspark:latest}
   user: "${AIRFLOW_UID:-50000}:0"
   environment:
     &airflow-env
@@ -10,11 +9,12 @@ x-airflow-common:
     AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
     AIRFLOW__WEBSERVER__SECRET_KEY: super-secret
     AIRFLOW__WEBSERVER__EXPOSE_HOST_PORT: 'true'
-    # Spark configuration for Airflow to find the Spark/Java binaries
-    JAVA_HOME: "/usr/lib/jvm/java-17-openjdk-amd64" # Path set by the openjdk-17 install in Dockerfile
-    SPARK_HOME: "/home/airflow/.local/lib/python3.11/site-packages/pyspark" # Default PySpark install path
-    # Kafka/Network configuration
+    JAVA_HOME: "/usr/lib/jvm/java-17-openjdk-amd64"
+    SPARK_HOME: "/home/airflow/.local/lib/python3.11/site-packages/pyspark"
     KAFKA_BROKER: kafka:9092
+    # Add HBase/HDFS configuration for PySpark client access
+    HADOOP_CONF_DIR: /etc/hadoop/conf # This is a common path inside Hadoop containers
+    HBASE_CONF_DIR: /etc/hbase/conf
   volumes:
     - ./dags:/opt/airflow/dags
     - ./logs:/opt/airflow/logs
@@ -23,6 +23,14 @@ x-airflow-common:
   depends_on:
     postgres:
       condition: service_healthy
+    kafka:
+      condition: service_started
+    hbase-master:
+      condition: service_started
+    # --- CRITICAL ADDITION ---
+    vector-db: 
+      condition: service_started
+    # -------------------------
 
 services:
   postgres:
@@ -79,8 +87,70 @@ services:
       KAFKA_BROKER_ID: 1
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092 # Note: localhost:9092 is for external access
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
     depends_on:
       - zookeeper
+    restart: always
+
+  # --- HADOOP/HBASE CORE INFRA ---
+  hadoop-namenode:
+    image: bde2020/hadoop-namenode:2.0.0-hadoop3.2.1-java8
+    hostname: namenode
+    container_name: namenode
+    ports:
+      - "9870:9870"
+    environment:
+      CLUSTER_NAME: hadoop-cluster
+    restart: always
+
+  hadoop-datanode:
+    image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
+    hostname: datanode
+    container_name: datanode
+    depends_on:
+      - hadoop-namenode
+    environment:
+      CORE_CONF_fs_defaultFS: hdfs://namenode:9000
+    restart: always
+
+  hbase-master:
+    image: harisekhon/hbase
+    hostname: hbase-master
+    container_name: hbase-master
+    ports:
+      - "16010:16010"
+    environment:
+      HBASE_CONF_hbase_rootdir: hdfs://namenode:9000/hbase
+      HBASE_CONF_hbase_zookeeper_quorum: zookeeper
+    depends_on:
+      - hadoop-namenode
+      - zookeeper
+    restart: always
+
+  hbase-regionserver: # CRITICAL ADDITION: The data handler
+    image: harisekhon/hbase
+    hostname: hbase-regionserver
+    container_name: hbase-regionserver
+    environment:
+      HBASE_CONF_hbase_rootdir: hdfs://namenode:9000/hbase
+      HBASE_CONF_hbase_zookeeper_quorum: zookeeper
+    depends_on:
+      - hbase-master
+      - hadoop-datanode
+    restart: always
+  
+  # --- VECTOR DB FOR RAG ---
+  vector-db:
+    image: semitechnologies/weaviate:1.24.0
+    hostname: weaviate
+    container_name: weaviate
+    ports:
+      - "8081:8080"
+    environment:
+      AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED: 'true'
+      PERSISTENCE_DATA_PATH: '/var/lib/weaviate'
+      # Weaviate often needs a vectorizer module, adding the default one
+      ENABLE_MODULES: 'text2vec-transformers' 
+      DEFAULT_VECTORIZER_MODULE: 'text2vec-transformers'
     restart: always
