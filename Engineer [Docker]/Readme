@@ -80,3 +80,39 @@ erDiagram
         
     }
     
+
+
+
+
+****Data Flow Diagram****
+
+graph LR
+    classDef Transport fill:#CCF,stroke:#009,stroke-width:2px;
+    classDef Processing fill:#FFC,stroke:#FB0,stroke-width:2px;
+    classDef Storage fill:#CFC,stroke:#090,stroke-width:2px;
+    classDef AIConsumption fill:#FCC,stroke:#C09,stroke-width:2px;
+    classDef Gen fill:#FDE,stroke:#FDG,stroke-width:2px;
+
+    subgraph Layers
+        %% Components & Flow
+        A(1. Sensor Producer) --> B(2. Kafka Topic: iot_readings);
+        B --> D(3. HBase Ingestion Consumer);
+        D --> E(4. HBase Tables T1-T5); 
+        C(5. PySpark ETL/Feature Engineering);
+        E  --> C; 
+        C  --> F[6. HBase Tables Storage T6, T7];
+        C  --> G[7. Vector DB];        
+        F -- Historical Context --> H{8. RAG/AI Model};
+        G -- Vector Context --> H;
+        H --> I[9. User/AI Query Interface];
+    end
+
+    class B Transport;
+    class D Processing;
+    class A Gen;
+    class C Processing;    
+    class E Storage;
+    class F Storage;
+    class G Storage
+    class H AIConsumption;
+    class I AIConsumption;
