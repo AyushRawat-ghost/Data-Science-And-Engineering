@@ -102,6 +102,7 @@ services:
       - "9870:9870"
     environment:
       CLUSTER_NAME: hadoop-cluster
+    # command: ["/bin/bash", "-c", "hdfs namenode -format -force -nonInteractive && /entrypoint.sh /run.sh"]
     restart: always
 
   hadoop-datanode:
@@ -141,6 +142,7 @@ services:
     restart: always
   
   # --- VECTOR DB FOR RAG ---
+
   vector-db:
     image: semitechnologies/weaviate:1.24.0
     hostname: weaviate
@@ -150,7 +152,19 @@ services:
     environment:
       AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED: 'true'
       PERSISTENCE_DATA_PATH: '/var/lib/weaviate'
-      # Weaviate often needs a vectorizer module, adding the default one
-      ENABLE_MODULES: 'text2vec-transformers' 
-      DEFAULT_VECTORIZER_MODULE: 'text2vec-transformers'
+      ENABLE_MODULES: 'text2vec-palm'
+      QUERY_MAX_MEMORY: 4000000000
+      DEFAULT_VECTORIZER_MODULE: 'text2vec-palm'
+      # CRITICAL: Point Weaviate to the new model server hostname
+      PALM_API_KEY: ${GEMINI_API_KEY_SECRET}
+    volumes: # <--- CRITICAL ADDITION
+      - weaviate_data:/var/lib/weaviate
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/v1/meta"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
     restart: always
+volumes:
+  weaviate_data:
+    driver: local
