@@ -1,128 +1,17 @@
-Docker Commands
-docker build -t custom-airflow-pyspark:latest .
-docker-compose up -d --build
-docker-compose up -d
-docker-compose ps
-docker exec -it engineerdocker-airflow-scheduler-1 bash
+Aether: Responsible for Atmospheric Detoxification. Its directive was to clean and regulate the Earth's ravaged atmosphere to make the air breathable.
 
+Poseidon: Responsible for Aquatic Restoration. Its directive was to detoxify the world's poisoned oceans, seas, and waterways.
 
+Demeter: Responsible for Flora Reintroduction. Its directive was to manage the cryo-preserved seed banks and re-establish plant life and vegetation across the globe.
 
+Artemis: Responsible for Fauna Reintroduction. Its directive was to manage the animal gene banks and clone and reintroduce animal life (wildlife and micro-organisms) once the environment was stable.
 
-****ER Diagram****
+Eleuthia: Responsible for Human Cloning and Nurturing. Its directive was to manage the "Cradle" facilities where new human life was cloned, raised, and nurtured in their early years.
 
+Apollo: Responsible for Archival and Education. Its directive was to hold the entirety of human history, culture, and knowledge, and teach it to the new generations of humans once they left the Cradles.
 
-erDiagram
-    FACILITY ||--o{ DEVICE : contains
-    DEVICE ||--o{ SENSOR_READINGS : generates
-    DEVICE ||--|{ ALERT_HISTORY : references
-    FACILITY ||--o{ ALERT_HISTORY : reports
-    FACILITY ||--o{ HOURLY_SUMMARY : summarizes
-    DEVICE ||--o{ AUDIT_LOG : logs
-    FACILITY ||--o{ AUDIT_LOG : logs
-    
-    
-    
-    FACILITY {
-        string facility_id PK "Row key"
-        double temp_max_c  "Rules"
-        double pressure_min_hpa  "Rules"
-        string alert_reciepient "Rules"
-        string facility_name "meta"
-        string manager_name "meta"
-        string city "meta"
+Hephaestus: Responsible for Machine Manufacturing. Its directive was to design, build, and maintain the robotic network (the machines) that performed the terraforming and ecological cleanup tasks as directed by GAIA and the other sub-functions.
 
-    }
-    
-    DEVICE {
-        string device_id PK "Row Key"
-        string model_number "info"
-        string serial_number "info"
-        string firmware_version "info"
-        date firmware_version "info"
-        
-        string facility_id FK "Row Key of FACILITY"
-        string aisle "loc"
-        string loc_latitude "loc"
-    }
-    
-    SENSOR_READINGS {
-        string row_key PK "Salt + device_id + Reversed TS"
-        string device_id FK "Row key of Device"
-        double temp_c "m"
-        double humid_pct "m"
-        double pressure_hpa "m"
-        double vibration_mms "m"
-        long reading_ts "c"
-        string sensor_status "c"
-    }
+Minerva: Responsible for Signal Decryption. Its directive was to build the vast communication network needed to eventually brute-force the deactivation codes and send the kill signal to the hostile Faro robot swarm, ending the initial apocalypse.
 
-    ALERT_HISTORY {
-        string row_key PK "Facility ID + Reversed TS"
-        string alert_type "alert"
-        double threshold_value "alert"
-        double actual_value "alert"
-                string facility_id FK "Row Key of FACILITY"
-        string device_id FK "References DEVICE"
-        long reading_ts "Timestamp of specific raw reading"
-        string status  "ref"
-    }
-
-    HOURLY_SUMMARY {
-        string row_key PK "Facility ID + Hour Key"
-        string facility_id FK "Facility ID"
-        
-        double temp_avg_c "temp"
-        double max_c "temp"
-        double min_c "temp"
-        double avg_pct "humid"
-        double max_pct "humid"
-        long reading_count "humid"
-        string message "alert"
-
-    }
-
-    AUDIT_LOG {
-        string row_key PK "System ID + Reversed TS"
-        string event_level "log"
-        string message "log"
-        string service_name "log"
-        string  device_id "log"
-        
-    }
-    
-
-
-
-
-****Data Flow Diagram****
-
-graph LR
-    classDef Transport fill:#CCF,stroke:#009,stroke-width:2px;
-    classDef Processing fill:#FFC,stroke:#FB0,stroke-width:2px;
-    classDef Storage fill:#CFC,stroke:#090,stroke-width:2px;
-    classDef AIConsumption fill:#FCC,stroke:#C09,stroke-width:2px;
-    classDef Gen fill:#FDE,stroke:#FDG,stroke-width:2px;
-
-    subgraph Layers
-        %% Components & Flow
-        A(1. Sensor Producer) --> B(2. Kafka Topic: iot_readings);
-        B --> D(3. HBase Ingestion Consumer);
-        D --> E(4. HBase Tables T1-T5); 
-        C(5. PySpark ETL/Feature Engineering);
-        E  --> C; 
-        C  --> F[6. HBase Tables Storage T6, T7];
-        C  --> G[7. Vector DB];        
-        F -- Historical Context --> H{8. RAG/AI Model};
-        G -- Vector Context --> H;
-        H --> I[9. User/AI Query Interface];
-    end
-
-    class B Transport;
-    class D Processing;
-    class A Gen;
-    class C Processing;    
-    class E Storage;
-    class F Storage;
-    class G Storage
-    class H AIConsumption;
-    class I AIConsumption;
+Hades: Responsible for the Extinction Failsafe Protocol. Its directive was to act as the ultimate failsafe. If GAIA determined that the terraforming process had reached an undesirable and irreversible outcome, HADES would be activated to sterilize the Earth again, wiping out the biosphere to give GAIA a clean slate for a fresh attempt at restoration.

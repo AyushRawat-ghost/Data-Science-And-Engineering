@@ -112,7 +112,7 @@ services:
     depends_on:
       - hadoop-namenode
     environment:
-      CORE_CONF_fs_defaultFS: hdfs://namenode:9000
+      CORE_CONF_fs_defaultFS: hdfs://namenode:8020
     restart: always
 
   hbase-master:
@@ -122,7 +122,7 @@ services:
     ports:
       - "16010:16010"
     environment:
-      HBASE_CONF_hbase_rootdir: hdfs://namenode:9000/hbase
+      HBASE_CONF_hbase_rootdir: hdfs://namenode:8020/hbase
       HBASE_CONF_hbase_zookeeper_quorum: zookeeper
     depends_on:
       - hadoop-namenode
