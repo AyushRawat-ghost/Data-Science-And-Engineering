@@ -1,100 +1,83 @@
 import time
 import random
-from utils.producer_base import get_producer, send_message
-from itertools import cycle
-from typing import Dict, Any, List, Tuple
+from scripts.utils.producer_base import get_producer, send_message
+from typing import Dict, Any, List
+import math # Used for random.gauss
 
 KAFKA_TOPIC = 'iot_readings'
 
+# --- Master Lists (Parent Keys) ---
 MASTER_DEVICES: List[str] = [f'DEV_{i:04}' for i in range(1, 21)]
-SENSOR_PROFILES: List[Dict[str, Any]] = [
-    {
-        'name': 'temperature', 
-        'unit': 'C', 
-        'baseline': 35.0, 
-        'stddev': 0.8, 
-        'alert_threshold': 40.0,
-        'alert_max': 45.0
-    },
-    {
-        'name': 'vibration_hz', 
-        'unit': 'Hz', 
-        'baseline': 50.0, 
-        'stddev': 1.5, 
-        'alert_threshold': 60.0,
-        'alert_max': 70.0
-    },
-    {
-        'name': 'pressure', 
-        'unit': 'hPa', 
-        'baseline': 995.0, 
-        'stddev': 2.0, 
-        'alert_threshold': 975.0,
-        'alert_max': 960.0
-    },
-    {
-        'name': 'humidity', 
-        'unit': '%', 
-        'baseline': 55.0, 
-        'stddev': 3.0, 
-        'alert_threshold': 75.0,
-        'alert_max': 90.0
-    }
-]
+MASTER_FACILITIES: List[str] = ['Minerva', 'Aether', 'Poseidon', 'Demeter', 'Apollo', 'Hades', 'Eleuthia', 'Artemis', 'Hephastus']
 
-SENSOR_ITERATOR = cycle(SENSOR_PROFILES)
+# --- Unified Sensor Profiles (Used for Realistic Generation) ---
+SENSOR_BASELINE = {
+    'temp_c': {'baseline': 35.0, 'stddev': 0.8, 'alert_threshold': 40.0},
+    'humid_pct': {'baseline': 55.0, 'stddev': 3.0, 'alert_threshold': 75.0},
+    'pressure_hpa': {'baseline': 995.0, 'stddev': 2.0, 'alert_threshold': 975.0},
+    'vibration_mms': {'baseline': 1.5, 'stddev': 0.5, 'alert_threshold': 4.5}
+}
 
 def generate_t1_data() -> Dict[str, Any]:
+    """
+    Generates a single, dense structured sensor reading payload matching the T1 schema.
+    """
+    
     device_id = random.choice(MASTER_DEVICES)
-    sensor_profile = next(SENSOR_ITERATOR)
+    facility_id = random.choice(MASTER_FACILITIES)
     
-    name = sensor_profile['name']
-    unit = sensor_profile['unit']
-    baseline = sensor_profile['baseline']
-    stddev = sensor_profile['stddev']
-    threshold = sensor_profile['alert_threshold']
-    alert_max = sensor_profile['alert_max']
-    
-    reading_value: float = 0.0
-    
-    # 98% of the time, generate a normal reading 
-    if random.random() > 0.02: 
-        reading_value = random.gauss(baseline, stddev)
-    else:
-        if threshold > baseline: # High value alert
-            reading_value = random.uniform(threshold, alert_max)
-        else:
-            reading_value = random.uniform(alert_max, threshold)
+    current_readings = {}
+    is_alert = False
 
-    reading_value = round(reading_value, 2)
+    # Generate all four measurements simultaneously
+    for key, profile in SENSOR_BASELINE.items():
+        # Generate value based on normal distribution
+        value = random.gauss(profile['baseline'], profile['stddev'])
+
+        # Inject a critical value 2% of the time to test alerting logic
+        if random.random() < 0.02:
+            # Check if high alert (temp, vib) or low alert (pressure)
+            if profile['alert_threshold'] > profile['baseline']: 
+                value = profile['alert_threshold'] + random.uniform(1.0, 5.0) 
+            else: 
+                value = profile['alert_threshold'] - random.uniform(1.0, 5.0)
+            is_alert = True
+        
+        current_readings[key] = round(value, 2)
+    
+    # Determine overall status
+    status = 'CRITICAL' if is_alert else 'OK'
 
     return {
-        'type': 'DEVICE_READING', 
+        'type': 'SENSOR_READING', # CRITICAL: Type matches consumer
         'device_id': device_id,
-        'timestamp': int(time.time() * 1000),
-    
-        'reading_name': name,
-        'value': reading_value,
-        'unit': unit,
+        'timestamp': int(time.time() * 1000), 
+        
+        # --- Data Fields matching Consumer/HBase T1 Schema ---
+        'temp_c': current_readings['temp_c'],
+        'humid_pct': current_readings['humid_pct'],
+        'pressure_hpa': current_readings['pressure_hpa'],
+        'vibration_mms': current_readings['vibration_mms'],
+        
+        # Context Fields
+        'sensor_status': status,
+        'facility_id': facility_id # FK
     }
 
 def run_t1_producer():
     producer = get_producer()
-    print("T1 Producer (Core Telemetry) streaming - HIGH VOLUME...")
+    print("T1 Producer (Raw Readings) streaming - HIGH VOLUME...")
     
     try:
-        while True:
+        while True: # Continuous stream
+            device_id = random.choice(MASTER_DEVICES)
             data = generate_t1_data()
+            
             send_message(producer, KAFKA_TOPIC, data['device_id'], data)
+            time.sleep(0.02)
             
-            print(f"Sent Reading: {data['device_id']} - {data['reading_name']}: {data['value']} {data['unit']}", end='\r')
-            
-            time.sleep(0.2) 
-            
-    except KeyboardInterrupt:
-        print("\nProducer Group T1 stopped.")
     except Exception as e:
-        print(f"Producer Group T1 encountered an error: {e}")
+        # NOTE: If this prints, the error is likely in producer_base.py or Kafka config
+        print(f"Producer T1 encountered a critical error: {e}")
     finally:
         producer.close()
-        print("\nT1 Producer FINISHED and STOPPED.")

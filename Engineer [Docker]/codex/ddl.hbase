@@ -1,17 +1,13 @@
--- device 
 create 'device', 'info', 'loc'
 
--- sensor readings
 create 'sensor_readings', 'm', 'c'
 
--- Facility
 create 'facility_config', 'rules', 'meta'
 
--- Hours Summary
 create 'hourly_summary', 'temp', 'humid', 'alert'
 
--- Alert History
 create 'alert_history', 'alert', 'ref'
 
--- Audit Logs
 create 'audit_log', 'log', 'user'
+
+list

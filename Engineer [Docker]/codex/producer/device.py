@@ -1,7 +1,7 @@
 import time
 import random
 from datetime import date, timedelta
-from utils.producer_base import get_producer, send_message
+from scripts.utils.producer_base import get_producer, send_message
 from typing import Dict, Any, List
 
 KAFKA_TOPIC = 'iot_readings'
@@ -37,7 +37,7 @@ def generate_t3_data() -> Dict[str, Any]:
     device_id = random.choice(MASTER_DEVICES)
     static_model_number = DEVICE_MODEL_MAP[device_id]
     
-    static_install_date = DEVICE_INSTALLATION_DATE_MAP[device_id] # <-- USED STATIC DATE
+    static_install_date = DEVICE_INSTALLATION_DATE_MAP[device_id]
     current_loc = DEVICE_LOCATION_MAP[device_id] 
 
     firmware_version = random.choice(['v1.2.1', 'v1.3.0', 'v2.0.0'])

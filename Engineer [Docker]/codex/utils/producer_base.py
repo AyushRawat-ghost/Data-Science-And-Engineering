@@ -4,7 +4,7 @@ import os
 from kafka import KafkaProducer
 from typing import Dict,Any
 
-KAFKA_Broker=os.environ.get('KAFKA_Broker','kafka:9092')
+KAFKA_Broker=os.environ.get('KAFKA_Broker','kafka:29092')
 def get_producer():
     return KafkaProducer(
         bootstrap_servers=KAFKA_Broker.split(','),

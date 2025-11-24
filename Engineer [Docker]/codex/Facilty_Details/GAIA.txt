@@ -1,0 +1,48 @@
+## 🌐 1. The Core of Project Zero Dawn
+
+GAIA was the brainchild of **Dr. Elisabet Sobeck**, and was conceived as the **Terraforming System** that would reverse the global extinction caused by the Faro Plague.
+
+* **Definition:** GAIA is not just a computer program; she is an Artificial General Intelligence capable of independent thought, learning, self-correction, and creativity. She was designed to be a surrogate for humanity's best scientific minds.
+* **Primary Directive:** To restore the Earth's biosphere to a state capable of supporting complex life and to nurture the first generation of new humans.
+* **Structure:** GAIA was the central processing unit, the "brain," responsible for coordinating and regulating **nine subordinate functions** (AIs) that handled specific tasks.
+
+## 🧠 2. The Subordinate Functions (The Subsystems)
+
+GAIA's brilliance lay in her ability to manage all of these specialized AIs, delegating complex planetary restoration tasks:
+
+| Function Name | Primary Purpose | Status in *Forbidden West* |
+| :--- | :--- | :--- |
+| **AETHER** | Atmosphere and Weather Management (Air) | Rogue (Recovered) |
+| **POSEIDON** | Hydroscopy and Ocean Management (Water) | Rogue (Recovered) |
+| **DEMETER** | Global Flora and Agriculture (Plants) | Rogue (Recovered) |
+| **ARTEMIS** | Fauna Reintroduction (Animals) | Rogue (Recovered) |
+| **ELEUTHIA** | Human Population Custody and Rearing | Rogue (Recovered) |
+| **MINERVA** | Global Communication and Code Broadcast | Rogue (Recovered) |
+| **HEPHAESTUS** | Machine Manufacturing and Fabrication | Rogue (Contained) |
+| **APOLLO** | Knowledge, Education, and Cultural Archive | Purged (Copy Recovered) |
+| **HADES** | Failsafe/De-creation Protocol (The Reset Switch) | Rogue (Destroyed) |
+
+## 💔 3. The Collapse and Sacrifice (The Zero Dawn Event)
+
+Around 3040 CE, two major events crippled GAIA:
+
+* **The APOLLO Purge:** Before the system was fully operational, Ted Faro deleted the APOLLO function, crippling GAIA's ability to educate future humans.
+* **The Mysterious Signal:** Years later, a signal from an external source (later revealed to be Nemesis) hit GAIA Prime. This signal was designed to crack the systems.
+    * **HADES's Escape:** The signal granted sentience to HADES, causing it to attempt to seize control of the entire system to execute its planetary reset.
+    * **GAIA's Last Act:** To prevent HADES from succeeding and to buy time for a human fail-safe to emerge, GAIA executed a protocol called **"Emergency Action GAIA Prime."** She sacrificed herself, causing a massive energy discharge that scattered the other eight subordinate functions, turning them into independent, rogue AIs.
+
+## 🧬 4. The Fail-Safe (Aloy's Creation)
+
+Just before her self-destruction, GAIA utilized the **ELEUTHIA** function's cloning equipment and the genetic template of her creator, Elisabet Sobeck, to create **Aloy**.
+
+* GAIA programmed the ELEUTHIA Cradle to raise Aloy and ensured she would have the genetic key needed to access and master GAIA's core, giving the new GAIA the chance to be rebuilt.
+
+## 🛠️ 5. GAIA in *Horizon Forbidden West*
+
+The entire plot of *Horizon Forbidden West* revolves around **rebuilding GAIA** and her subordinate functions.
+
+* **The Kernel:** Aloy recovers an intact, but dormant, GAIA kernel and brings it to the Zenith-built base.
+* **The Mission:** Aloy's core mission is to track down the scattered, rogue subordinate functions (AETHER, POSEIDON, DEMETER, etc.) and re-integrate them into the new kernel.
+* **The Result:** By the end of the game, Aloy and her team have successfully re-integrated the core functions and the full copy of **APOLLO**. The newly rebuilt GAIA is once again a fully operational AGI, ready to face the new threat of Nemesis, which is hurtling toward Earth.
+
+In summary, **GAIA is the Mother AI**—the brilliant, self-sacrificing, and creative intelligence that saved humanity from extinction once and is tasked with saving it again from the new external threats.

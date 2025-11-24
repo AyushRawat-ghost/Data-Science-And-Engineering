@@ -15,8 +15,9 @@ USER airflow
 RUN pip install --no-cache-dir \
     pyspark==4.0.1 \
     pandas \
-    kafka-python
+    kafka-python \
     happybase \
+    thrift \
     weaviate-client \
     langchain-weaviate \
     langchain

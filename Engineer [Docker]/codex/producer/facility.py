@@ -1,6 +1,6 @@
 import time
 import random
-from utils.producer_base import get_producer, send_message
+from scripts.utils.producer_base import get_producer, send_message
 from itertools import cycle
 
 KAFKA_TOPIC = 'iot_readings'

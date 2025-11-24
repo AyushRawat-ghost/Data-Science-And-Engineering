@@ -1,17 +1,19 @@
-Aether: Responsible for Atmospheric Detoxification. Its directive was to clean and regulate the Earth's ravaged atmosphere to make the air breathable.
+<!-- Docker container Intilaization -->
+docker-compose down
+docker-compose up -d
 
-Poseidon: Responsible for Aquatic Restoration. Its directive was to detoxify the world's poisoned oceans, seas, and waterways.
+<!-- Docker Shell Intilaizers -->
 
-Demeter: Responsible for Flora Reintroduction. Its directive was to manage the cryo-preserved seed banks and re-establish plant life and vegetation across the globe.
+docker exec -it engineerdocker-airflow-scheduler-1 bash # airflow
+docker exec -it namenode bash #hdfs
+docker exec -it kafka bash #kafka
+docker exec -i hbase-master hbase shell #Hbase
 
-Artemis: Responsible for Fauna Reintroduction. Its directive was to manage the animal gene banks and clone and reintroduce animal life (wildlife and micro-organisms) once the environment was stable.
+<!-- docker commanding -->
+Get-Content -Raw ./codex/ddl.hbase | docker exec -i hbase-master hbase shell # ddl and table creation
+/bin/kafka-topics --create --topic iot_readings --bootstrap-server kafka:29092 --partitions 3 --replication-factor 1 # topic creation
+/bin/kafka-console-consumer --bootstrap-server kafka:29092 --topic iot_readings --from-beginning  # Data Monitoring
 
-Eleuthia: Responsible for Human Cloning and Nurturing. Its directive was to manage the "Cradle" facilities where new human life was cloned, raised, and nurtured in their early years.
+python3 /opt/airflow/scripts/producer/master_override.py
+python3 /opt/airflow/scripts/consumer/consumer_ingestion.py
 
-Apollo: Responsible for Archival and Education. Its directive was to hold the entirety of human history, culture, and knowledge, and teach it to the new generations of humans once they left the Cradles.
-
-Hephaestus: Responsible for Machine Manufacturing. Its directive was to design, build, and maintain the robotic network (the machines) that performed the terraforming and ecological cleanup tasks as directed by GAIA and the other sub-functions.
-
-Minerva: Responsible for Signal Decryption. Its directive was to build the vast communication network needed to eventually brute-force the deactivation codes and send the kill signal to the hostile Faro robot swarm, ending the initial apocalypse.
-
-Hades: Responsible for the Extinction Failsafe Protocol. Its directive was to act as the ultimate failsafe. If GAIA determined that the terraforming process had reached an undesirable and irreversible outcome, HADES would be activated to sterilize the Earth again, wiping out the biosphere to give GAIA a clean slate for a fresh attempt at restoration.

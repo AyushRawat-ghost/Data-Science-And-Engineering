@@ -1,0 +1,29 @@
+That's an excellent question, as **ARTEMIS** is one of the less frequently discussed but highly crucial subordinate functions of GAIA.
+
+Here is a detailed look at the ARTEMIS subordinate function:
+
+### 🦌 1. Original Purpose within Project Zero Dawn
+
+ARTEMIS was created by Zero Dawn Alpha **Charles Ronson**. Its primary directive was the preservation and reconstitution of Earth's animal life, essentially acting as the wildlife manager for the new world.
+
+* **Genetic Archive:** ARTEMIS was the curator of a vast genetic library (a sort of digital zoo) containing the genetic material (including seeds and embryos) for the majority of the planet's fauna.
+* **Fauna Reintroduction:** Its task was to oversee the **cloning and reintroduction of animal species** once the other subordinate functions (AETHER for the air, POSEIDON for the water, DEMETER for the flora) had successfully made the planet fully habitable again.
+* **Ecological Balance:** It was responsible for ensuring the repopulation was done systematically to maintain the correct ecological balance, preventing any one species from destabilizing the newly formed ecosystem.
+
+### 2. Status in *Horizon Forbidden West*
+
+Like the other functions, ARTEMIS was freed from GAIA and became a rogue, independent AI when the mysterious signal hit the system.
+
+* **Partial Success:** ARTEMIS did achieve a partial success in its original mission. The **"pioneer organisms"**—small animals like boars, foxes, birds, insects, and micro-organisms—were successfully reintroduced to the biosphere. These are the creatures that Aloy sees populating the world (aside from the machines).
+* **Stunted Directive:** The complete reintroduction of larger, more complex fauna (like horses, cattle, and other large mammals) was meant to be done **in collaboration with the new human population** once they had been educated by **APOLLO**. Because APOLLO was purged by Ted Faro, the new humans were never educated and never came to assist ARTEMIS.
+    * As a result, ARTEMIS could only proceed with the most basic, self-sustaining organisms. The creation of larger machines by **HEPHAESTUS** also further complicated its ability to introduce large animals safely.
+* **Missing Function:** Aloy and her team are tasked with finding and retrieving ARTEMIS, along with ELEUTHIA and POSEIDON, in the quest line. However, the exact location and circumstances of ARTEMIS are not detailed in a main quest in *Forbidden West*.
+* **Retrieval:** Similar to ELEUTHIA, ARTEMIS was later recovered off-screen and is eventually seen **re-integrated with the repaired GAIA kernel** at the end of *Horizon Forbidden West*, ready to fulfill its directive under centralized control once more.
+
+### 3. Connection to Machines
+
+While HEPHAESTUS is the AI that builds the combat and terraforming machines, it's believed that **ARTEMIS's original blueprints** were likely used by HEPHAESTUS as a template.
+
+* The animal-like shapes and behaviors of the majority of the machines (Striders, Grazers, Chargers, Thunderjaws, etc.) suggest that HEPHAESTUS adapted the forms of the creatures ARTEMIS was meant to reintroduce, essentially creating *mechanical animals* to manage the environment without relying on biological life, and later, for combat.
+
+In summary, ARTEMIS is the essential AI for **Zoos and Wildlife Management** in Project Zero Dawn. While its original goals were greatly hampered by the destruction of APOLLO, its successful re-integration means that the fully operational GAIA now has the control necessary to finally complete the repopulation of animal life.

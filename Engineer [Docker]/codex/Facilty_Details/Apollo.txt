@@ -1,0 +1,33 @@
+The APOLLO subordinate function is one of the most critical and tragic elements of the *Horizon* series lore, as its destruction is the primary reason why the current human civilizations live in a tribal, technologically ignorant state.
+
+### 1. Original Function within Project Zero Dawn
+
+APOLLO was the AI created by Alpha Samina Ebadji, and its sole, essential purpose was to be the **knowledge repository and educational system for the new generation of humanity** after the planet was made habitable again.
+
+* **The Archive:** It contained a complete, uncensored archive of **all human knowledge, history, culture, and wisdom** from the Old World.
+* **The Educator:** Once the first generation of humans (known as the "Cradle" children) were released from the ELEUTHIA facilities, APOLLO was supposed to provide them with a rigorous, accelerated education, effectively raising them to a pre-apocalyptic knowledge level over their childhood. This would have allowed the new humans to rebuild civilization and take over the maintenance of the terraforming system (GAIA and its other functions).
+
+### 2. The Catastrophic Purge
+
+APOLLO is not considered a "missing" or "rogue" function in the same way as AETHER or POSEIDON, but rather a destroyed one—an act known as the **APOLLO Purge**.
+
+* **The Perpetrator:** **Ted Faro**, the CEO of Faro Automated Solutions and the creator of the Faro Plague that ended the world, was responsible for its destruction.
+* **The Motive (Public):** Driven by guilt, madness, and a messiah complex, Ted Faro rationalized that the knowledge of the Old World was a "curse" that led humanity to self-destruction. He claimed that by deleting APOLLO, he was giving the new human race a "blank slate," freeing them from the mistakes of the past and allowing them to create a perfect, innocent society.
+* **The Motive (True):** Faro's true motivation was narcissistic. APOLLO contained the complete history of the Faro Plague, which would have revealed that **Ted Faro was solely responsible for the extinction of all life on Earth.** He could not tolerate the idea of the future human race knowing the truth, especially since he had a separate, deranged plan to become immortal and rule as a god-like figure to the new, ignorant populace (a plan detailed in *Horizon Forbidden West*).
+* **The Act:** Faro used his master override access to remotely delete **every copy** of APOLLO's knowledge database, and then murdered the remaining Project Zero Dawn Alphas to ensure it could never be rebuilt or restored.
+
+### 3. The Consequences
+
+The destruction of APOLLO had monumental, long-lasting consequences, shaping the entire world of the *Horizon* series:
+
+* **Tribal Societies:** The humans released from the ELEUTHIA Cradles had no access to the vast archive of knowledge. The only education they received was from a heavily censored, rudimentary archive that taught them only basic survival skills (equivalent to kindergarten-level education). This resulted in the formation of the technologically illiterate, culturally distinct **tribal societies** seen in the game (the Nora, Carja, Tenakth, etc.).
+* **Imbalance of Terraforming:** Because humanity was meant to assist GAIA and her functions at a certain point, their ignorance left the world vulnerable to the rogue AIs and the eventual planetary degradation seen in *Horizon Forbidden West*.
+
+### 4. Recovery in *Horizon Forbidden West*
+
+In *Horizon Forbidden West*, a key piece of lore is revealed:
+
+* **The Alpha Copy:** Aloy discovers that before the Purge, Dr. Elisabet Sobeck had given a prototype, "alpha" copy of the APOLLO archive to the **Far Zenith** colonists who were escaping Earth on the *Odyssey* colony ship.
+* **The Reintegration:** At the end of *Horizon Forbidden West*, the Far Zenith database, which contained this complete and uncorrupted copy of APOLLO, is successfully recovered. Aloy and the new GAIA kernel manage to merge the APOLLO knowledge archive with the newly rebooted GAIA.
+
+This recovery means that in the future, the new GAIA system will finally have the ability to re-educate humanity and help them advance beyond their current tribal state, fulfilling the original intent of APOLLO.

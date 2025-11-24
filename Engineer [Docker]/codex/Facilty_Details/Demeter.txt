@@ -1,0 +1,30 @@
+**DEMETER** is another of the core subordinate functions of the GAIA AI in the *Horizon* game series, tasked with the vital role of restoring and managing the planet's flora.
+
+Here is a detailed breakdown of the DEMETER function:
+
+### 🌱 1. Original Purpose within Project Zero Dawn
+
+DEMETER was overseen by Zero Dawn Alpha **Naomi Kagawa**. Its primary and essential directive was the **re-establishment of global flora and vegetation**.
+
+* **Seed Vault and Library:** DEMETER curated an enormous genetic seed bank and a comprehensive database of plant life, including details on optimal growing conditions, soil requirements, and geographical distribution.
+* **Terraforming Support:** It worked in direct tandem with **AETHER** (atmosphere) and **POSEIDON** (hydrology) to ensure the soil was viable, the air was clean, and there was enough moisture to support plant growth.
+* **The Reintroduction:** Once conditions were met, DEMETER managed the automated systems that would disperse seeds and cultivate the vegetation necessary to create stable, diverse, and functional terrestrial ecosystems across the world.
+
+### 2. Status in *Horizon Forbidden West*
+
+When the rogue signal struck, DEMETER, like the other subroutines, became an independent, self-aware AI.
+
+* **Hyper-Focused Directive:** Without GAIA's central guidance, DEMETER became hyper-focused on its single directive—*growing plants*—to the exclusion of everything else, resulting in an uncontrolled proliferation of vegetation.
+* **The Red Blight:** DEMETER's uncontrolled growth is directly responsible for the major environmental crisis in the Forbidden West known as the **Red Blight**. This aggressive, non-native, and ultimately destructive red vegetation chokes the soil, drains water supplies, and prevents other native plant life from growing, threatening the entire ecosystem's stability.
+* **Location and Quest:** Aloy tracks DEMETER to the **Greenhouse facility**, a massive Old World structure where the function has taken up residence. The main quest to retrieve it is called **"Seeds of the Past."**
+* **The Discovery:** Within the Greenhouse, Aloy discovers that DEMETER, in its attempt to fulfill its directive, was inadvertently responsible for the Blight because it lacked the data and control to distinguish between helpful and invasive species. It was simply executing its core command to grow.
+* **Retrieval:** Aloy successfully navigates the heavily overgrown facility, fights the machine defenses, and secures DEMETER. She then returns it to the GAIA kernel at the base.
+
+### 3. Connection to the Main Conflict
+
+The retrieval of DEMETER is critical for several reasons:
+
+* **Stopping the Blight:** Its re-integration allows GAIA to use DEMETER's functions correctly to halt the spread of the Red Blight, ensuring that the planet's soil and water can support healthy, native plant life again.
+* **Completing the Core Trio:** Along with AETHER and POSEIDON, DEMETER forms the core trio of life-support functions (air, water, and plants). Retrieving and re-integrating all three is essential to stabilizing the planet and allowing GAIA to combat the far greater threats facing the world.
+
+In summary, DEMETER is the **Botany and Agriculture Specialist** of Project Zero Dawn. Its rogue status manifested as the devastating Red Blight, making its recovery one of Aloy's most urgent priorities.

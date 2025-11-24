@@ -1,13 +1,19 @@
 import threading
 import time
+import os
+import sys
+
+AIRFLOW_MOUNT_ROOT = "/opt/airflow"
+if AIRFLOW_MOUNT_ROOT not in sys.path:
+    sys.path.append(AIRFLOW_MOUNT_ROOT)
 
 try:
-    from sensor_readings import run_t1_producer
-    from device import run_t3_producer
-    from facility import run_t4_producer
+    from scripts.producer.sensor_readings import run_t1_producer
+    from scripts.producer.device import run_t3_producer
+    from scripts.producer.facility import run_t4_producer
 except ImportError as e:
     print(f"Error importing producer scripts: {e}")
-    print("Please ensure producer_t1.py, producer_t3.py, and producer_t4.py are in the correct path.")
+    print("Please ensure facility.py, sensor_readings.py, and device.py are in the correct path.")
     exit()
 
 def main():

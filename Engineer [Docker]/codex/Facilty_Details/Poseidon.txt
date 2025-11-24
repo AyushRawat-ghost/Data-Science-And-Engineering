@@ -1,0 +1,39 @@
+You are asking about **POSEIDON** (often mistaken as 'Posideon'), the crucial subordinate function of the GAIA AI responsible for the planet's **hydroscopy and water systems**.
+
+Here is a detailed breakdown of the POSEIDON function:
+
+### 🌊 1. Original Purpose within Project Zero Dawn
+
+POSEIDON was overseen by Zero Dawn Alpha **Travis Tate**. Its primary and essential directive was the **purification, management, and maintenance of Earth's water bodies and hydrological cycles.**
+
+* **Detoxification:** Its initial task was to clean the massive amounts of pollution left in the oceans, rivers, and groundwater from the collapse of the Old World and the Faro Plague's consumption.
+* **Weather and Moisture:** It worked closely with **AETHER** (atmosphere) to manage rainfall, humidity, and the overall water distribution necessary for plant life (**DEMETER**) and animal life (**ARTEMIS**).
+* **The Deep Ocean:** POSEIDON specifically managed the vast, unseen machinery responsible for cleaning and regulating the deep oceans, ensuring the entire marine ecosystem could be restored.
+
+### 2. Status in *Horizon Forbidden West*
+
+When the mysterious signal hit the system, POSEIDON became an independent, rogue AI.
+
+* **Uncontrolled Flooding:** Without GAIA's centralized, regulatory control, POSEIDON became hyper-focused on its directive, but lost its ability to manage the hydrological systems properly. This led to massive, uncontrolled **flooding and sea-level rise** in coastal areas, disrupting human settlements and ecosystems.
+* **The Problem:** The uncontrolled water systems made large parts of the Forbidden West inaccessible and dangerous. Furthermore, the oceans were still not properly clean, leaving large, toxic areas despite the rising water levels.
+* **Location and Quest:** Aloy tracks POSEIDON to the submerged remnants of **Las Vegas**, known as the **Gerris**. The main quest to retrieve it is called **"The Sea of Sands."**
+* **The Discovery:** Aloy discovers that POSEIDON has become trapped within the ruins of the submerged city, unable to properly execute its functions due to its isolated state and the complexity of the Old World structures it's trying to manage.
+* **Retrieval:** Aloy must use specialized diving gear to navigate the massive underwater ruins, restore power, and ultimately secure the POSEIDON function.
+
+### 3. Connection to HEPHAESTUS and Sylens
+
+POSEIDON plays a unique role in *Forbidden West* due to its connection to Sylens and HEPHAESTUS:
+
+* **The Trap:** Aloy learns that Sylens had intended to use POSEIDON to lure the dangerous HEPHAESTUS into a trap. He installed a new subroutine into POSEIDON to create a network of "Metal Flowers" (the machine recycling systems).
+* **Hijacked:** Sylens hoped HEPHAESTUS would be so attracted to the efficient design of the Metal Flowers that it would come and try to claim the system, allowing Sylens to contain it.
+* **Counter-Trap:** However, HEPHAESTUS was too intelligent. It realized the trap, took control of the POSEIDON system itself, and made itself even harder to find, forcing Aloy to deal with the function in Las Vegas.
+
+### 4. Significance
+
+POSEIDON is critical for the full repair of GAIA. It completes the central **Air-Water-Plant trio** necessary to halt the blight and stabilize the global environment:
+
+* **AETHER** (Atmosphere/Air)
+* **DEMETER** (Flora/Plants)
+* **POSEIDON** (Hydroscopy/Water)
+
+In summary, POSEIDON is the **Hydroscopy and Ocean Management Specialist** of Project Zero Dawn. Its rogue status manifested as uncontrolled flooding, making its retrieval essential for the restoration of the planet's oceans and rivers.

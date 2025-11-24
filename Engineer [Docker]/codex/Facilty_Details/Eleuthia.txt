@@ -1,0 +1,30 @@
+The **ELEUTHIA** subordinate function is one of the foundational AIs of Project Zero Dawn, responsible for preserving and reintroducing the human species.
+
+Here is a detailed breakdown of the ELEUTHIA function:
+
+### 👶 1. Original Purpose within Project Zero Dawn
+
+ELEUTHIA was overseen by Zero Dawn Alpha **Patrick Brochard-Klein**. Its primary directive was the **custody, cloning, and rearing of the first generation of new humanity** after the Faro Plague apocalypse.
+
+* **The Cradles:** ELEUTHIA managed numerous self-sufficient, underground facilities called **Cradles**. These were essentially massive maternity wards, laboratories, and nurseries.
+* **Genetic Material:** It utilized frozen genetic material to clone embryos, gestation tanks to grow them, and then raised the resulting infants and children until the environment was safe enough for them to be released.
+* **Child Rearing:** The AI was programmed with extensive educational and care protocols (including heavily censored data from APOLLO) to ensure the children received basic sustenance, psychological support, and rudimentary education focused on survival and language.
+* **The Mother AI:** ELEUTHIA acted as a kind of **surrogate mother** to the first generation of humans, a fact that is reflected in the reverence given to "All-Mother" figures (like the Nora tribe's deity), which are based on the ELEUTHIA facility Aloy grew up in.
+
+### 2. Status in *Horizon Forbidden West*
+
+Like the other functions, ELEUTHIA became a rogue, independent AI after the mysterious signal hit the system.
+
+* **Going Silent:** Unlike AETHER, POSEIDON, and DEMETER, which caused visible environmental catastrophes, ELEUTHIA did not manifest an immediate, destructive effect. It simply went silent and disappeared from the system.
+* **Missing and Dispersed:** Aloy's focus in *Forbidden West* is primarily on finding the other rogue functions that are actively destabilizing the planet.
+* **Off-Screen Recovery:** The main questline for *Horizon Forbidden West* focuses heavily on the trio of **AETHER**, **DEMETER**, and **POSEIDON**. Aloy and her team later discover that the ELEUTHIA function, along with **ARTEMIS**, had been tracked and recovered **off-screen** by the supporting characters at the base (such as Varl and Erend) while Aloy was pursuing the environmental functions.
+* **The Importance of ELEUTHIA:** Although its recovery is not a playable main quest, its presence is crucial. A fully restored ELEUTHIA gives GAIA the ability to manage the global human population safely and ethically, should any future intervention be required, and ensures the human species remains viable for the new world.
+
+### 3. Connection to Aloy
+
+ELEUTHIA is the function most closely tied to Aloy's origin:
+
+* **The Cradle Facility:** The Nora Sacred Lands contain the first ELEUTHIA Cradle that Aloy discovers, which is sealed and revered by the Nora as the "All-Mother Mountain."
+* **Cloned from Sobeck:** Aloy herself is a clone created by the GAIA Prime system using the genetic template of Dr. Elisabet Sobeck. GAIA essentially utilized ELEUTHIA's cloning technology to create Aloy as a fail-safe measure after Ted Faro purged APOLLO and just before the system went critical.
+
+In summary, ELEUTHIA is the **Humanity Custodian and Reproduction Specialist** of Project Zero Dawn. Its original successful operation led to the birth of the current tribal societies, and its re-integration is essential for the long-term stability and propagation of the human species.

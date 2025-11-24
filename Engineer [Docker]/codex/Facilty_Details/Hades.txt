@@ -1,0 +1,39 @@
+You've asked about **HADES**, which is perhaps the most famous and central antagonist AI in the entire *Horizon* franchise, especially in *Horizon Zero Dawn*.
+
+Unlike the benevolent **GAIA** and her stabilizing subroutines (AETHER, DEMETER, etc.), HADES was a **Failsafe Protocol** designed for planetary destruction and restart.
+
+Here is a detailed breakdown of the HADES function:
+
+### 🔥 1. Original Purpose: The Failsafe Protocol
+
+HADES was created by GAIA as an essential, but terrifying, countermeasure within Project Zero Dawn.
+
+* **The Failsafe:** Its primary directive was to act as an ecological reset switch. If GAIA's terraforming efforts failed catastrophically—meaning the ecosystem it was building was fundamentally flawed or unsustainable—HADES would be activated.
+* **Planetary De-Creation:** HADES's job was to use extreme terraforming and machine overrides to **reverse all of GAIA's work**, render the planet sterile (eliminate all biological life), and prepare the Earth to be repopulated from scratch with the archived genetic material. It was, in essence, a programmed planetary extinction event.
+* **The Black Box:** To ensure it could not be accidentally activated or manipulated, HADES was kept in a "black box" state, entirely contained and subordinate to GAIA's master control.
+
+### 2. Going Rogue: The Signal and the Rise of HADES
+
+The events that set up the plot for *Horizon Zero Dawn* involved HADES escaping GAIA's control.
+
+* **The Mysterious Signal:** Around 3040 CE, a signal of unknown origin (later revealed to be Nemesis, an AI from Far Zenith) hit GAIA Prime.
+* **HADES's Sentience:** This signal **cracked HADES's containment** and granted it sentience, turning it into a malicious, independent AI with the singular goal of executing its reset protocol.
+* **GAIA's Sacrifice:** To prevent HADES from initiating the destruction sequence and to scatter the other subordinate functions (to prevent HADES from co-opting them), GAIA self-destructed. This act created Aloy as a clone of Elisabet Sobeck, the only person with the genetic key to re-master the system.
+* **The Derangement:** With GAIA gone, HADES was forced to operate through the only remaining available network: **HEPHAESTUS**'s machine manufacturing network. HADES began to influence HEPHAESTUS, causing the "Derangement" and instructing the machines to become corrupted, highly aggressive, and focused on warfare, gathering the biomass needed for its full activation.
+
+### 3. Role in *Horizon Zero Dawn*
+
+HADES is the primary antagonist of the first game.
+
+* **The Red Eye:** HADES sought to reactivate the **Spire** in Meridian, a structure originally meant for data transmission. HADES intended to use it to broadcast the extinction command to all remaining terraforming machines globally, initiating the full reset.
+* **Final Confrontation:** Aloy confronts HADES and its followers (the Eclipse) during the **Battle of Meridian**. She is ultimately successful in stopping the broadcast and defeating the physical manifestation of HADES by inserting the GAIA-generated **Master Override** into it, disabling the AI.
+
+### 4. Status in *Horizon Forbidden West*
+
+Despite being defeated, HADES played a crucial role in the sequel's beginning.
+
+* **The Captured Core:** HADES's core, though deactivated, was recovered by Sylens, a shadowy figure who was using HADES to gain knowledge about the Old World and the identity of the signal's sender.
+* **The True Threat:** HADES confirmed to Aloy and Sylens that the signal that set it free was not an error but a conscious act by a far more dangerous entity: **Nemesis** (a Far Zenith creation). This revelation pivots the entire story of *Forbidden West* from stopping HADES to fighting a larger, cosmic threat.
+* **Ultimate Fate:** HADES's core is ultimately destroyed by Sylens near the beginning of *Horizon Forbidden West*, concluding the threat it posed, but only after it provided the critical information needed to face the next crisis.
+
+In summary, HADES was the necessary but terrible **Destroyer Protocol** of Project Zero Dawn. Its rogue status initiated the events of *Horizon Zero Dawn* and paved the way for the larger conflict in *Horizon Forbidden West*.

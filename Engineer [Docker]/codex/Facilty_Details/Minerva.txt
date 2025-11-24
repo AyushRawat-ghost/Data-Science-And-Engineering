@@ -1,0 +1,33 @@
+You're asking about **MINERVA**, one of the most vital and successful subordinate functions of the GAIA AI in Project Zero Dawn. MINERVA's successful operation is the reason the Faro Plague was ultimately defeated.
+
+Here is a detailed breakdown of the MINERVA function:
+
+### 📡 1. Original Purpose within Project Zero Dawn
+
+MINERVA was overseen by Zero Dawn Alpha **Samina Ebadji** (who also oversaw APOLLO). Its primary and most critical directive was the **creation and broadcast of the override code** necessary to deactivate the Faro Swarm.
+
+* **The Code-Breaker:** The Faro Plague was designed to ignore any attempt at a system override. MINERVA's initial purpose was to use complex, rapidly evolving algorithms to **brute-force crack the encryption** protecting the Faro swarm's master code. This was a race against time, requiring massive computational power.
+* **The Spire Network:** Once the code was cracked, MINERVA was designed to utilize a network of strategically placed communication **Spires** (the most famous being the one in Meridian) to transmit the deactivation code globally to every Faro machine.
+* **Mission Complete:** MINERVA was the first and only subordinate function to complete its primary mission *before* the birth of the new human civilization. Its successful code broadcast effectively deactivated the machines, ending the Faro Plague and allowing GAIA's terraforming to begin.
+
+### 2. Status in *Horizon Zero Dawn* and *Forbidden West*
+
+Since MINERVA had already executed its primary function, its role changed dramatically after the Faro Plague was defeated.
+
+* **Monitoring and Maintenance:** MINERVA transitioned into a monitoring role, maintaining the global communication network that was originally built to broadcast the kill code. This infrastructure remained vital for GAIA's overall operation and global communication between the other functions.
+* **Silent and Stable:** Because its main task was complete, and its role was largely passive, MINERVA was one of the less outwardly volatile rogue AIs after the signal hit. When GAIA self-destructed, MINERVA became independent but did not cause a widespread crisis like AETHER or DEMETER.
+
+### 3. Role in the Game Lore
+
+MINERVA is perhaps best known for two key roles in the overall narrative:
+
+* **The Meridian Spire:** The distinctive, tall structure in the center of Meridian (the capital of the Carja tribe) is the most recognizable of the Spires built by MINERVA. In *Horizon Zero Dawn*, the rogue HADES intended to use this same spire network (which MINERVA created) to broadcast its *extinction* code, effectively hijacking MINERVA's infrastructure to execute a planetary reset.
+* **The "Whispering Metal":** Many of the datapoints and text logs found in the game, which detail the final days of the Old World and the operation of the Zero Dawn Alphas, are related to MINERVA's desperate computational effort to crack the code before all human life was consumed.
+
+### 4. Ultimate Fate
+
+In *Horizon Forbidden West*, MINERVA is one of the functions that Aloy and her team recover **off-screen** or with minimal narrative focus, alongside ELEUTHIA and ARTEMIS.
+
+* **Re-Integration:** MINERVA is successfully re-integrated with the new GAIA kernel at the base. Its stable communication and computational architecture are essential for the fully operational GAIA to manage and control the other complex subroutines (especially now that the highly volatile HEPHAESTUS is also contained).
+
+In summary, MINERVA is the **Communication and Encryption Specialist** of Project Zero Dawn. Its successful completion of its mission saved the world from the Faro Plague, and its infrastructure became a key battleground in the conflict against HADES.
