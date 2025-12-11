@@ -10,7 +10,7 @@ MASTER_DEVICES: List[str] = [f'DEV_{i:04}' for i in range(1, 21)]
 MASTER_FACILITIES = ['Minerva', 'Aether', 'Poseidon', 'Demeter', 'Apollo', 'Hades', 'Eleuthia', 'Artemis', 'Hephaestus']
 AVAILABLE_MODELS: List[str] = ['IoT-X300', 'Sensor-B450', 'Gateway-G10', 'Probe-P900']
 
-# --- SETUP: STATIC METADATA MAPPING ---
+# --- STATIC METADATA MAPPING ---
 
 DEVICE_MODEL_MAP: Dict[str, str] = {}
 for i, device_id in enumerate(MASTER_DEVICES):
@@ -23,7 +23,7 @@ for device_id in MASTER_DEVICES:
         'facility_id': random.choice(MASTER_FACILITIES),
         'aisle': random.choice(['Aisle-01', 'Aisle-05', 'Bay-10', 'Rack-4']),
         'loc_latitude': round(random.uniform(21.0, 22.0), 4),
-        'loc_longitude': round(random.uniform(77.0, 78.0), 4) # Added longitude for completeness
+        'loc_longitude': round(random.uniform(77.0, 78.0), 4)
     }
 
 DEVICE_INSTALLATION_DATE_MAP: Dict[str, str] = {}

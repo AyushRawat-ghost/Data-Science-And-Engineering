@@ -33,7 +33,7 @@ def generate_t4_data():
 def run_t4_producer():
     producer = get_producer()
     print("T4 Producer (Facility Config) streaming - CYCLIC MODE...")
-    while True:
+    for i in range(1,10):
         data = generate_t4_data()
         send_message(producer, KAFKA_TOPIC, data['facility_id'], data)
         print(f"Sent config update for: {data['facility_id']}", end='\r')

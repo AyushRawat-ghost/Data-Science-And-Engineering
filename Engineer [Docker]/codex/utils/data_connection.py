@@ -1,10 +1,10 @@
 import happybase
 import time
 import os
-import socket # Added to catch socket errors directly
+import socket
 from typing import Dict, Any, List, Tuple
 
-# --- Configuration Constants (Matching Docker Hostnames) ---
+# --- Configuration Constants  ---
 HBASE_HOST = os.environ.get('HBASE_HOST', 'hbase-master')
 HBASE_PORT = int(os.environ.get('HBASE_PORT', 9090)) # HBase Thrift Server
 KAFKA_BROKER = os.environ.get('KAFKA_BROKER', 'kafka:29092')
@@ -16,11 +16,9 @@ def connect_to_hbase(table_names: List[str]) -> Tuple[Any, Dict[str, Any]]:
     max_retries = 10
     for attempt in range(max_retries):
         try:
-            # Connect using the Thrift server connection, which happybase requires
             connection = happybase.Connection(HBASE_HOST, HBASE_PORT, timeout=60000)
             connection.open()
             
-            # --- Get Table Objects ---
             table_objects = {}
             for name in table_names:
                 table_objects[name] = connection.table(name)
@@ -28,11 +26,8 @@ def connect_to_hbase(table_names: List[str]) -> Tuple[Any, Dict[str, Any]]:
             print(f"✅ HBase connection successful. Tables linked: {', '.join(table_names)}")
             return connection, table_objects
 
-        # Use generic socket error (or Exception) as the primary transport error check
         except (socket.error, Exception) as e:
-            # We catch the error that was previously happybase.hbase.ttypes.TTransportException
             print(f"Connection failed (Attempt {attempt + 1}/{max_retries}). Retrying in 5 seconds...")
-            # We also check for the specific AttributeError to prevent silent failure if it happens again
             if "has no attribute 'hbase'" in str(e):
                  print("FATAL DEPENDENCY ERROR: HappyBase internal structure is broken. Please check Python/Thrift versions.")
                  return None, {}

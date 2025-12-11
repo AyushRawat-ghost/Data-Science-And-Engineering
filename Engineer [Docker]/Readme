@@ -1,19 +1,30 @@
-<!-- Docker container Intilaization -->
+# Docker Creations and Restart
+docker build --no-cache -t custom-airflow-pyspark:latest .
+docker-compose restart engineerdocker-airflow-scheduler-1
+
+# Docker container Intilaization 
 docker-compose down
 docker-compose up -d
+docker-compose stop ""
+docker-compose restart ""
+docker-compose ps
 
-<!-- Docker Shell Intilaizers -->
+
+# Docker Shell Intilaizers 
 
 docker exec -it engineerdocker-airflow-scheduler-1 bash # airflow
 docker exec -it namenode bash #hdfs
 docker exec -it kafka bash #kafka
 docker exec -i hbase-master hbase shell #Hbase
 
-<!-- docker commanding -->
+# docker commanding 
 Get-Content -Raw ./codex/ddl.hbase | docker exec -i hbase-master hbase shell # ddl and table creation
 /bin/kafka-topics --create --topic iot_readings --bootstrap-server kafka:29092 --partitions 3 --replication-factor 1 # topic creation
 /bin/kafka-console-consumer --bootstrap-server kafka:29092 --topic iot_readings --from-beginning  # Data Monitoring
 
-python3 /opt/airflow/scripts/producer/master_override.py
-python3 /opt/airflow/scripts/consumer/consumer_ingestion.py
+
+# Execution
+python3 /opt/airflow/scripts/producer/master_override.py # Data Generation
+python3 /opt/airflow/scripts/consumer/consumer_ingestion.py # Data Consumption
+python3 /opt/airflow/scripts/etl/etl.py # Data Filling
 

@@ -12,13 +12,13 @@ x-airflow-common:
     JAVA_HOME: "/usr/lib/jvm/java-17-openjdk-amd64"
     SPARK_HOME: "/home/airflow/.local/lib/python3.11/site-packages/pyspark"
     KAFKA_BROKER: kafka:29092
-    # Add HBase/HDFS configuration for PySpark client access
-    HADOOP_CONF_DIR: /etc/hadoop/conf # This is a common path inside Hadoop containers
+    HADOOP_CONF_DIR: /etc/hadoop/conf
     HBASE_CONF_DIR: /etc/hbase/conf
   volumes:
     - ./dags:/opt/airflow/dags
     - ./logs:/opt/airflow/logs
     - ./config/airflow.cfg:/opt/airflow/airflow.cfg
+    - ./config:/opt/airflow/config/
     - ./local_datalake:/opt/airflow/local_datalake
     - ./codex:/opt/airflow/scripts
   depends_on:

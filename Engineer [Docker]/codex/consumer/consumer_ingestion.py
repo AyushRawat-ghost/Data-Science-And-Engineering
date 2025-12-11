@@ -18,9 +18,6 @@ except ImportError:
 
 # --- Configuration Constants ---
 KAFKA_TOPIC = "iot_readings"
-
-# Inside Docker use kafka:29092, from host use localhost:9092
-# Env var will override default, but we also print what we actually use
 KAFKA_BROKER = os.environ.get("KAFKA_BROKER", "kafka:29092")
 
 TABLES_NEEDED: List[str] = ["sensor_readings", "device", "facility"]
@@ -33,7 +30,7 @@ TABLES: Dict[str, Any] = {}
 # --- Row Key Generation Utilities ---
 
 def generate_row_key_t1(device_id: str, timestamp_ms: int) -> bytes:
-    """Creates the Row Key for sensor_readings (T1): Salt + Device ID + Reversed TS."""
+    """Creates the Row Key for sensor_readings (T1)"""
     reversed_ts = str(sys.maxsize - timestamp_ms)
     salt = device_id[-1]
     return f"{salt}_{device_id}_{reversed_ts}".encode("utf-8")
@@ -86,7 +83,6 @@ def map_and_ingest(data: Dict[str, Any]):
             print(f"⚙️ Updated T4 Config for {data['facility_id']}")
 
         else:
-            # Ignore other types in Stage 1
             pass
 
     except KeyError as ke:
@@ -97,7 +93,6 @@ def map_and_ingest(data: Dict[str, Any]):
 
 
 def run_consumer():
-    """Kafka consumer with direct partition assignment (no subscribe) and minimal, clear debug."""
     global HBASE_CONNECTION, TABLES
 
     # 1. Connect to HBase
@@ -112,7 +107,7 @@ def run_consumer():
     # 2. Create consumer WITHOUT subscribe
     consumer = KafkaConsumer(
         bootstrap_servers=KAFKA_BROKER.split(","),
-        group_id=None,                 # no consumer group (simpler debugging)
+        group_id=None,                
         auto_offset_reset="earliest",
         enable_auto_commit=False,
         value_deserializer=lambda x: json.loads(x.decode("utf-8")),
@@ -146,15 +141,10 @@ def run_consumer():
         return
 
     # 4. DIRECT ASSIGNMENT ONLY (no subscribe)
-    # For now we just read all partitions; your topic has only {0} anyway
     topic_partitions = [TopicPartition(KAFKA_TOPIC, p) for p in partitions]
     consumer.assign(topic_partitions)
     print(f"✅ Directly assigned partitions: {topic_partitions}")
-
-    # Seek to the beginning of each partition every run (for debugging)
     consumer.seek_to_beginning()
-
-    # Offset debug
     try:
         beginning = consumer.beginning_offsets(topic_partitions)
         end = consumer.end_offsets(topic_partitions)

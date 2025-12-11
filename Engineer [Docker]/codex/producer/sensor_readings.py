@@ -2,7 +2,6 @@ import time
 import random
 from scripts.utils.producer_base import get_producer, send_message
 from typing import Dict, Any, List
-import math # Used for random.gauss
 
 KAFKA_TOPIC = 'iot_readings'
 
@@ -31,12 +30,9 @@ def generate_t1_data() -> Dict[str, Any]:
 
     # Generate all four measurements simultaneously
     for key, profile in SENSOR_BASELINE.items():
-        # Generate value based on normal distribution
         value = random.gauss(profile['baseline'], profile['stddev'])
 
-        # Inject a critical value 2% of the time to test alerting logic
         if random.random() < 0.02:
-            # Check if high alert (temp, vib) or low alert (pressure)
             if profile['alert_threshold'] > profile['baseline']: 
                 value = profile['alert_threshold'] + random.uniform(1.0, 5.0) 
             else: 
@@ -69,7 +65,7 @@ def run_t1_producer():
     print("T1 Producer (Raw Readings) streaming - HIGH VOLUME...")
     
     try:
-        while True: # Continuous stream
+        while True:
             device_id = random.choice(MASTER_DEVICES)
             data = generate_t1_data()
             
@@ -77,7 +73,6 @@ def run_t1_producer():
             time.sleep(0.02)
             
     except Exception as e:
-        # NOTE: If this prints, the error is likely in producer_base.py or Kafka config
         print(f"Producer T1 encountered a critical error: {e}")
     finally:
         producer.close()
