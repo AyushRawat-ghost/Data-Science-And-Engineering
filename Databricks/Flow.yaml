@@ -1,0 +1,276 @@
+resources:
+  jobs:
+    Instagram_Data_Pipeline:
+      name: Instagram Data Pipeline
+      email_notifications:
+        on_start:
+          - ayush6342ily@gmail.com
+        on_success:
+          - ayush6342ily@gmail.com
+        on_failure:
+          - ayush6342ily@gmail.com
+      trigger:
+        pause_status: UNPAUSED
+        table_update:
+          table_names:
+            - instagram.bronzelayer.instagram_usage_lifestyle
+      tasks:
+        - task_key: Nuke_Test
+          spark_python_task:
+            python_file: /Workspace/Users/ayush6342ily@gmail.com/Data-Science-And-Engineering/Databricks/nuke.py
+          email_notifications:
+            on_start:
+              - ayush6342ily@gmail.com
+            on_success:
+              - ayush6342ily@gmail.com
+            on_failure:
+              - ayush6342ily@gmail.com
+          environment_key: Default
+        - task_key: Bronze_Layer
+          depends_on:
+            - task_key: Nuke_Test
+          notebook_task:
+            notebook_path: /Workspace/Users/ayush6342ily@gmail.com/Data-Science-And-Engineering/Databricks/Bronze_layer
+            source: WORKSPACE
+          email_notifications:
+            on_start:
+              - ayush6342ily@gmail.com
+            on_success:
+              - ayush6342ily@gmail.com
+            on_failure:
+              - ayush6342ily@gmail.com
+          environment_key: Default
+        - task_key: Silver_Layer
+          depends_on:
+            - task_key: Bronze_Layer
+          notebook_task:
+            notebook_path: /Workspace/Users/ayush6342ily@gmail.com/Data-Science-And-Engineering/Databricks/silver_layer
+            source: WORKSPACE
+          email_notifications:
+            on_start:
+              - ayush6342ily@gmail.com
+            on_success:
+              - ayush6342ily@gmail.com
+            on_failure:
+              - ayush6342ily@gmail.com
+        - task_key: Gold_Layer_01_dim_users
+          depends_on:
+            - task_key: Silver_Layer
+          notebook_task:
+            notebook_path: /Workspace/Users/ayush6342ily@gmail.com/Data-Science-And-Engineering/Databricks/goldlayer/01_dim_users
+            source: WORKSPACE
+          email_notifications:
+            on_start:
+              - ayush6342ily@gmail.com
+            on_success:
+              - ayush6342ily@gmail.com
+            on_failure:
+              - ayush6342ily@gmail.com
+        - task_key: Gold_Layer_02_dim_health_lifestyle
+          depends_on:
+            - task_key: Silver_Layer
+          notebook_task:
+            notebook_path: /Workspace/Users/ayush6342ily@gmail.com/Data-Science-And-Engineering/Databricks/goldlayer/02_dim_health_lifestyle
+            source: WORKSPACE
+          email_notifications:
+            on_start:
+              - ayush6342ily@gmail.com
+            on_success:
+              - ayush6342ily@gmail.com
+            on_failure:
+              - ayush6342ily@gmail.com
+        - task_key: Gold_Layer_03_dim_user_behaviour
+          depends_on:
+            - task_key: Silver_Layer
+          notebook_task:
+            notebook_path: /Workspace/Users/ayush6342ily@gmail.com/Data-Science-And-Engineering/Databricks/goldlayer/03_dim_user_behavior
+            source: WORKSPACE
+          email_notifications:
+            on_start:
+              - ayush6342ily@gmail.com
+            on_success:
+              - ayush6342ily@gmail.com
+            on_failure:
+              - ayush6342ily@gmail.com
+        - task_key: Gold_Layer_04_dim_social
+          depends_on:
+            - task_key: Silver_Layer
+          notebook_task:
+            notebook_path: /Workspace/Users/ayush6342ily@gmail.com/Data-Science-And-Engineering/Databricks/goldlayer/04_dim_social
+            source: WORKSPACE
+          email_notifications:
+            on_start:
+              - ayush6342ily@gmail.com
+            on_success:
+              - ayush6342ily@gmail.com
+            on_failure:
+              - ayush6342ily@gmail.com
+        - task_key: Gold_Layer_05_fact_engagement
+          depends_on:
+            - task_key: Silver_Layer
+          notebook_task:
+            notebook_path: /Workspace/Users/ayush6342ily@gmail.com/Data-Science-And-Engineering/Databricks/goldlayer/05_fact_engagement
+            source: WORKSPACE
+          email_notifications:
+            on_start:
+              - ayush6342ily@gmail.com
+            on_success:
+              - ayush6342ily@gmail.com
+            on_failure:
+              - ayush6342ily@gmail.com
+        - task_key: Executive_summary
+          depends_on:
+            - task_key: Gold_Layer_01_dim_users
+            - task_key: Gold_Layer_05_fact_engagement
+          notebook_task:
+            notebook_path: /Workspace/Users/ayush6342ily@gmail.com/Data-Science-And-Engineering/Databricks/goldlayer/View
+              Layer/executive_summary
+            source: WORKSPACE
+        - task_key: Gold_Layer_06_dim_Security
+          depends_on:
+            - task_key: Silver_Layer
+          notebook_task:
+            notebook_path: /Workspace/Users/ayush6342ily@gmail.com/Data-Science-And-Engineering/Databricks/goldlayer/06_security
+            source: WORKSPACE
+          email_notifications:
+            on_start:
+              - ayush6342ily@gmail.com
+            on_success:
+              - ayush6342ily@gmail.com
+            on_failure:
+              - ayush6342ily@gmail.com
+        - task_key: Security
+          depends_on:
+            - task_key: Gold_Layer_01_dim_users
+            - task_key: Gold_Layer_06_dim_Security
+          notebook_task:
+            notebook_path: /Workspace/Users/ayush6342ily@gmail.com/Data-Science-And-Engineering/Databricks/goldlayer/View
+              Layer/security
+            source: WORKSPACE
+        - task_key: Social_context
+          depends_on:
+            - task_key: Gold_Layer_05_fact_engagement
+            - task_key: Gold_Layer_04_dim_social
+          notebook_task:
+            notebook_path: /Workspace/Users/ayush6342ily@gmail.com/Data-Science-And-Engineering/Databricks/goldlayer/View
+              Layer/soial_context
+            source: WORKSPACE
+          email_notifications:
+            on_start:
+              - ayush6342ily@gmail.com
+            on_success:
+              - ayush6342ily@gmail.com
+            on_failure:
+              - ayush6342ily@gmail.com
+        - task_key: Stress_Classifie
+          depends_on:
+            - task_key: Social_context
+            - task_key: behavioral_user_insights
+          notebook_task:
+            notebook_path: /Workspace/Users/ayush6342ily@gmail.com/Data-Science-And-Engineering/Databricks/MachineLearning/Stress
+              Classifier
+            source: WORKSPACE
+          email_notifications:
+            on_start:
+              - ayush6342ily@gmail.com
+            on_success:
+              - ayush6342ily@gmail.com
+            on_failure:
+              - ayush6342ily@gmail.com
+        - task_key: behavioral_user_insights
+          depends_on:
+            - task_key: Gold_Layer_01_dim_users
+            - task_key: Gold_Layer_02_dim_health_lifestyle
+            - task_key: Gold_Layer_06_dim_Security
+          notebook_task:
+            notebook_path: /Workspace/Users/ayush6342ily@gmail.com/Data-Science-And-Engineering/Databricks/goldlayer/View
+              Layer/behaviooral_user_insights
+            source: WORKSPACE
+          email_notifications:
+            on_start:
+              - ayush6342ily@gmail.com
+            on_success:
+              - ayush6342ily@gmail.com
+            on_failure:
+              - ayush6342ily@gmail.com
+        - task_key: User_Persona_Segmenter
+          depends_on:
+            - task_key: behavioral_user_insights
+          notebook_task:
+            notebook_path: /Workspace/Users/ayush6342ily@gmail.com/Data-Science-And-Engineering/Databricks/MachineLearning/User
+              Persona Segmenter
+            source: WORKSPACE
+          email_notifications:
+            on_start:
+              - ayush6342ily@gmail.com
+            on_success:
+              - ayush6342ily@gmail.com
+            on_failure:
+              - ayush6342ily@gmail.com
+        - task_key: health_habit
+          depends_on:
+            - task_key: Gold_Layer_05_fact_engagement
+            - task_key: Gold_Layer_02_dim_health_lifestyle
+          notebook_task:
+            notebook_path: /Workspace/Users/ayush6342ily@gmail.com/Data-Science-And-Engineering/Databricks/goldlayer/View
+              Layer/health_habit
+            source: WORKSPACE
+          email_notifications:
+            on_start:
+              - ayush6342ily@gmail.com
+            on_success:
+              - ayush6342ily@gmail.com
+            on_failure:
+              - ayush6342ily@gmail.com
+        - task_key: Engagement_Forecaster
+          depends_on:
+            - task_key: health_habit
+          notebook_task:
+            notebook_path: /Workspace/Users/ayush6342ily@gmail.com/Data-Science-And-Engineering/Databricks/MachineLearning/Engagement
+              Forecaster
+            source: WORKSPACE
+          email_notifications:
+            on_start:
+              - ayush6342ily@gmail.com
+            on_success:
+              - ayush6342ily@gmail.com
+            on_failure:
+              - ayush6342ily@gmail.com
+        - task_key: ML_Insights_Joiner
+          depends_on:
+            - task_key: User_Persona_Segmenter
+            - task_key: Engagement_Forecaster
+            - task_key: Stress_Classifie
+          notebook_task:
+            notebook_path: /Workspace/Users/ayush6342ily@gmail.com/Data-Science-And-Engineering/Databricks/MachineLearning/Ml_output
+            source: WORKSPACE
+          email_notifications:
+            on_start:
+              - ayush6342ily@gmail.com
+            on_success:
+              - ayush6342ily@gmail.com
+            on_failure:
+              - ayush6342ily@gmail.com
+          notification_settings:
+            no_alert_for_skipped_runs: true
+            no_alert_for_canceled_runs: true
+            alert_on_last_attempt: true
+        - task_key: master_gold_analytics
+          depends_on:
+            - task_key: Silver_Layer
+          notebook_task:
+            notebook_path: /Workspace/Users/ayush6342ily@gmail.com/Data-Science-And-Engineering/Databricks/goldlayer/View
+              Layer/master_gold_analytics
+            source: WORKSPACE
+          email_notifications:
+            on_start:
+              - ayush6342ily@gmail.com
+            on_failure:
+              - ayush6342ily@gmail.com
+      queue:
+        enabled: true
+      environments:
+        - environment_key: Default
+          spec:
+            environment_version: "4"
+      performance_target: PERFORMANCE_OPTIMIZED
