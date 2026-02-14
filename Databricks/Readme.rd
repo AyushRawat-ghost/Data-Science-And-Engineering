@@ -5,7 +5,7 @@ An enterprise-grade data intelligence platform built on Databricks that processe
 🏗️ Technical Architecture (Medallion Pattern)
 The project utilizes a multi-layered storage strategy to ensure data reliability and high-performance analytics.
 
-Bronze Layer (Raw): Ingests 1.5M original records as Delta tables directly from source ingestion (Kaggle CSV/JSON).
+Bronze Layer (Raw): Ingests 3M original records as Delta tables directly from source ingestion (Kaggle CSV/JSON).
 
 Silver Layer (Validated): Performs deduplication, schema enforcement, and error handling to remove invalid data.
 
